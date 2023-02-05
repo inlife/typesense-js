@@ -91,6 +91,7 @@ export default class Configuration {
     this.logger.setLevel(this.logLevel)
 
     this.additionalHeaders = options.additionalHeaders
+    this.useHttpOnlyCookies = options.useHttpOnlyCookies
 
     this.showDeprecationWarnings(options)
     this.validate()

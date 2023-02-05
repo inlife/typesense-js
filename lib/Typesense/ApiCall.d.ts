@@ -16,6 +16,7 @@ export default class ApiCall {
     private readonly sendApiKeyAsQueryParam?;
     private readonly numRetriesPerRequest;
     private readonly additionalUserHeaders?;
+    private readonly useHttpOnlyCookies?;
     private readonly logger;
     private currentNodeIndex;
     constructor(configuration: Configuration);

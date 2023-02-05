@@ -31,6 +31,7 @@ export default class ApiCall {
   private readonly sendApiKeyAsQueryParam?: boolean
   private readonly numRetriesPerRequest: number
   private readonly additionalUserHeaders?: Record<string, string>
+  private readonly useHttpOnlyCookies?: boolean
 
   private readonly logger: Logger
   private currentNodeIndex: number
@@ -49,6 +50,7 @@ export default class ApiCall {
     this.retryIntervalSeconds = this.configuration.retryIntervalSeconds
     this.sendApiKeyAsQueryParam = this.configuration.sendApiKeyAsQueryParam
     this.additionalUserHeaders = this.configuration.additionalHeaders
+    this.useHttpOnlyCookies = this.configuration.useHttpOnlyCookies
 
     this.logger = this.configuration.logger
 
@@ -130,7 +132,7 @@ export default class ApiCall {
           url: this.uriFor(endpoint, node),
           headers: Object.assign({}, this.defaultHeaders(), additionalHeaders, this.additionalUserHeaders),
           timeout: this.connectionTimeoutSeconds * 1000,
-          withCredentials: this.configuration.useHttpOnlyCookies,
+          withCredentials: this.useHttpOnlyCookies,
           maxContentLength: Infinity,
           maxBodyLength: Infinity,
           responseType,
