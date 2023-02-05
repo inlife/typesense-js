@@ -34,6 +34,7 @@ export interface ConfigurationOptions {
   useServerSideSearchCache?: boolean
   cacheSearchResultsForSeconds?: number
   additionalHeaders?: Record<string, string>
+  useHttpOnlyCookies?: boolean
 
   logLevel?: LogLevelDesc
   logger?: Logger
@@ -53,6 +54,7 @@ export default class Configuration {
   readonly logger: Logger
   readonly logLevel: LogLevelDesc
   readonly additionalHeaders?: Record<string, string>
+  readonly useHttpOnlyCookies?: boolean
 
   constructor(options: ConfigurationOptions) {
     this.nodes = options.nodes || []

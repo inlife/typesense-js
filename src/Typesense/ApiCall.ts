@@ -130,6 +130,7 @@ export default class ApiCall {
           url: this.uriFor(endpoint, node),
           headers: Object.assign({}, this.defaultHeaders(), additionalHeaders, this.additionalUserHeaders),
           timeout: this.connectionTimeoutSeconds * 1000,
+          withCredentials: this.configuration.useHttpOnlyCookies,
           maxContentLength: Infinity,
           maxBodyLength: Infinity,
           responseType,
